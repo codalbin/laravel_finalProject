@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/questions', function () {
+    return view('questions', [
+        'questions' => App\Models\Question::all(),
+    ]);
+});
