@@ -22,3 +22,9 @@ Route::get('/questions', function () {
         'questions' => App\Models\Question::all(),
     ]);
 });
+
+Route::get('/users', function(){
+    return view('users', [
+        'users' => App\Models\User::all(),
+    ]);
+});
