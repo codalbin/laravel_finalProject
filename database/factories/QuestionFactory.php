@@ -21,9 +21,12 @@ class QuestionFactory extends Factory
             // title content author
             'title' => fake()->sentence(),
             'slug' => Str::slug(fake()->sentence()),
-            'category_id' => fake()->numberBetween(1, 10),
+            'tag_id' => fake()->numberBetween(1, 10),
             'body' => fake()->text(),
-            'author_id' => fake()->numberBetween(1, 10),
+            'user_id' => fake()->numberBetween(1, 10),
+            'votes' => fake()->numberBetween(-3, 10),
+            'answers' => fake()->numberBetween(0, 10),
+            'views' => fake()->numberBetween(0, 10),
         ];
     }
 }

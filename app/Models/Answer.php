@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Question extends Model
+class Answer extends Model
 {
     use HasFactory;
 
-    public function answers(): HasMany
+    public function question(): BelongsTo
     {
-        return $this->hasMany(Answer::class, 'question_id');
+        return $this->belongsTo(Question::class);
     }
-
 }

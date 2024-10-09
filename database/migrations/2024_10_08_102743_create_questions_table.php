@@ -24,8 +24,11 @@ return new class extends Migration
             //     table: 'categories',
             //     indexName: 'post_category_id'
             // );
-            $table->integer('author_id');
-            $table->integer('category_id');
+            $table->integer('user_id');
+            $table->integer('tag_id');
+            $table->integer('votes')->default(0);
+            $table->integer('answers')->default(0);
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }
