@@ -22,11 +22,11 @@ class QuestionFactory extends Factory
             'title' => fake()->sentence(),
             'slug' => Str::slug(fake()->sentence()),
             'tag_id' => fake()->numberBetween(1, 10),
-            'body' => fake()->text(),
+            'body' => fake()->text(500),
             'user_id' => fake()->numberBetween(1, 10),
             'votes' => fake()->numberBetween(-3, 10),
             'answers' => fake()->numberBetween(0, 10),
-            'views' => fake()->numberBetween(0, 10),
+            'views' => fake()->numberBetween(0, 10)
         ];
     }
 }

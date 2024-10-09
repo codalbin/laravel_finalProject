@@ -3,14 +3,9 @@
     {{-- <x-slot:title>{{ $title }}</x-slot> --}}
     {{-- <h1>All Questions</h1> --}}
 
-    <div class="bg-white py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl lg:mx-0">
-            {{-- <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Question</h2> --}}
-            {{-- <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.</p> --}}
-          </div>
-
-          <article class="flex max-w-xl my-4 flex-row items-start justify-between gap-x-4">
+    <div class="bg-white py-24 sm:py-4">
+        <div class="mx-auto max-w-4xl px-6 lg:px-8">
+          <article class="flex my-4 flex-row items-start justify-between gap-x-4">
             {{-- <div class="flex flex-col text-xs min-w-20 items-end py-3 gap-y-2">
                 <p>{{ $question->votes }} votes</p>
                 <p>{{ $question->answers }} answers</p>
@@ -25,7 +20,7 @@
                         </a>
                     </h3>
                     {{-- <p class="border-b">votes</p> --}}
-                    <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ Str::limit($question->body, 150)}}</p>
+                    <p class="mt-5 text-sm leading-6 text-gray-600">{{ $question->body }}</p>
                 </div>
                 <div class="relative mt-8 flex items-center gap-x-4">
 
@@ -50,9 +45,13 @@
 
                 </div>
             </div>
+            <hr class="border-10 border-gray-500" />
+
             </article>
 
-          <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-1">
+            @livewire('question-form')
+
+            <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-1">
             @foreach ($answers as $answer)
                 <article class="flex max-w-xl flex-row items-start justify-between border-t-2 border-gray gap-x-4">
                 <div class="flex flex-col text-xs min-w-20 items-end py-3 gap-y-2">
@@ -93,7 +92,8 @@
             <!-- More posts... -->
           </div>
         </div>
-      </div>
+    </div>
+    {{ $answers->links() }}
     </div>
 
 

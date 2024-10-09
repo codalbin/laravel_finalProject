@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Question::factory(10)->create();
-        Answer::factory(20)->recycle(Question::all())->create();
+        Answer::factory(50)->recycle(Question::all())->create();
     }
 }
