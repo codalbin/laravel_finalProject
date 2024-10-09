@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image'
     ];
 
     /**
@@ -45,6 +46,6 @@ class User extends Authenticatable
     ];
 
     public function posts(): HasMany { // Pour que depuis l'auteur on puisse avoir accès à tous ses posts
-        return $this->hasMany(Question::class, 'author_id');
+        return $this->hasMany(Question::class, 'user_id');
     }
 }
