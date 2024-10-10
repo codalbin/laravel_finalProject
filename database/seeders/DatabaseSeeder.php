@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Answer;
 use Illuminate\Database\Seeder;
 use App\Models\Question;
 use App\Models\Tag;
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Question::factory(10)->create();
+        Answer::factory(50)->recycle(Question::all())->create();
         $this->call([TagSeeder::class, UserSeeder::class]) ;
     }
 }

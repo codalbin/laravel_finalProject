@@ -10,7 +10,7 @@
     {{-- <title>{{ $title }}</title> --}}
 
 </head>
-<body>
+<body class="bg-gray-50">
     <!--
   This example requires updating your template:
 
