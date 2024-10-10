@@ -4,6 +4,8 @@ use App\Livewire\QuestionForm;
 use Illuminate\Support\Facades\Route;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Tag;
+use App\Models\User;
 use App\Http\Controllers\QuestionController;
 
 /*
@@ -23,6 +25,7 @@ Route::get('/', function () {
 
 Route::get('/questions', function () {
     return view('questions', [
+        'title' => "All Questions",
         'questions' => Question::all(),
     ]);
 });
@@ -36,9 +39,21 @@ Route::get('/questions/{question:slug}', function (Question $question) {
 
 Route::get('/new-question', function(){
     return view('new-question');
+});
 
 Route::get('/users', function(){
     return view('users', [
-        'users' => App\Models\User::all(),
+        'users' => User::all(),
     ]);
 });
+
+Route::get('/tags/{tag:slug}', function(Tag $tag){
+    $questions = $tag->questions ;
+    return view ('questions', ['title' => 'Questions related to ' . $tag->name, 'questions' => $questions]) ;
+});
+
+Route::get('/user/{user:username}', function(User $user){
+    $questions = $user->questions ;
+    return view ('questions', ['title' => 'Questions from ' . $user->name, 'questions' => $questions]) ;
+});
+
