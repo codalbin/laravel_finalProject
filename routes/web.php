@@ -36,6 +36,7 @@ Route::get('/questions/{question:slug}', function (Question $question) {
 
 Route::get('/new-question', function(){
     return view('new-question');
+});
 
 Route::get('/users', function(){
     return view('users', [
