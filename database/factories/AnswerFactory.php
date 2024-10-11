@@ -20,7 +20,8 @@ class AnswerFactory extends Factory
         return [
             'question_id' => Question::factory(),
             'body' => fake()->text(),
-            'user_id' => fake()->numberBetween(1, 10)
+            'user_id' => fake()->numberBetween(1, 10),
+            'votes' => fake()->numberBetween(-10, 10),
         ];
     }
 }
