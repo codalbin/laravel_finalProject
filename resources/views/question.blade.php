@@ -75,7 +75,7 @@
                                         </a>
                                     </p>
                                 </div>
-                                <time datetime="2020-03-16" class="text-gray-500">answered {{ $question->created_at->diffForHumans() }}</time>
+                                <time datetime="2020-03-16" class="text-gray-500">answered {{ $answer->created_at->diffForHumans() }}</time>
                             </div>
                         </div>
                     </article>
