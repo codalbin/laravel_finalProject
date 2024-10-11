@@ -23,13 +23,13 @@ Route::get('/', function () {
 
 Route::get('/questions', function () {
     return view('questions', [
-        'questions' => Question::all(),
+        'questions' => Question::latest()->paginate(5),
     ]);
 });
 
 Route::get('/questions/{question:slug}', function (Question $question) {
     // dd($question->answers);
-    return view('question', ['question' => Question::find($question->id), 'answers' => Answer::where('question_id', $question->id)->paginate(3)]);
+    return view('question', ['question' => Question::find($question->id), 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(3)]);
 });
 
 // Route::get('/questions/create' , [QuestionController::class, 'create']);
