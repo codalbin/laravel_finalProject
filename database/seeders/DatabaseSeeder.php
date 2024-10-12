@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
             User::all(),
             Tag::all()
         ])->create();
-        Answer::factory(50)->recycle(Question::all())->create();
+        Answer::factory(50)->recycle([Question::all(), User::all()])->create();
     }
 }

@@ -7,7 +7,7 @@
             </div>
             <div class="mx-auto mt-10 grid max-w-7xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:grid-cols-4 lg:mx-0">
                 @foreach ($users as $user)
-                    <a href="/user/{{$user->username}}" class="flex flex-col items-center justify-between bg-gray-50 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <a href="/questions?user={{$user->username}}" class="flex flex-col items-center justify-between bg-gray-50 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
                         <div class="group relative flex flex-col items-center space-y-4">
                             <img class="w-20 h-20 rounded-full object-cover" src="{{$user->image}}" alt="{{$user->image}}" />
                             <h3 class="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 mt-4">

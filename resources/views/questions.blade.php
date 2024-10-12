@@ -1,53 +1,62 @@
 <x-layout>
     <x-header-nav-bar />
+    <div class="bg-white py-10">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto lg:mx-0 flex justify-between">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $title }}</h2>
+                <a href="/new-question" class="bg-blue-500 rounded-md p-2 text-white hover:bg-blue-600">Ask Question</a>
+            </div>
+            <div class="w-full mx-auto mt-6 mb-10 grid max-w-none grid-cols-1 gap-x-8 gap-y-6 pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-1">
+                @foreach ($questions as $question)
+                    <article class="w-full flex border-t-2 border-gray-300 gap-x-4">
 
-    <div class="py-24 sm:py-32 mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="flex justify-between max-w-xl">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">All Questions</h2>
-            <a href="/new-question" class="bg-blue-500 rounded-md p-2 text-white hover:bg-blue-600">Ask Question</a>
-        </div>
-        <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-1">
-            @foreach ($questions as $question)
-                <article class="max-w-xl flex border-t-2 border-gray gap-x-4">
-                    <div class="flex flex-col text-xs min-w-20 items-end py-3 gap-y-2">
-                        <p>{{ $question->votes }} votes</p>
-                        <p>{{ $question->answers }} answers</p>
-                        <p>{{ $question->views }} views</p>
-                    </div>
-                    <div class="w-full">
-                        <div class="group relative">
-                            <h3 class="mt-3 text-lg leading-6 text-blue-600 group-hover:text-blue-700">
-                            <a href="/questions/{{ $question->slug }}" class="flex md:justify-left">
-                                <span class="absolute inset-0"></span>
-                                {{ $question->title }}
-                            </a>
-                            </h3>
-                            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ Str::limit($question->body, 150)}}</p>
+                        <div class="flex flex-col text-xs min-w-20 items-end py-3 gap-y-2">
+                            <p>{{ $question->votes }} votes</p>
+                            <p>{{ $question->answers }} answers</p>
+                            <p>{{ $question->views }} views</p>
                         </div>
-
-                        <div class="flex md:justify-between w-full mt-4">
-                            <div>
-                                <a href="/tags" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-sm text-gray-600 hover:bg-gray-100">Marketing</a>
+                        <div class="w-full">
+                            <div class="group relative">
+                                <h3 class="mt-3 text-lg leading-6 text-blue-600 group-hover:text-blue-700">
+                                <a href="/questions/{{ $question->slug }}" class="flex md:justify-left">
+                                    <span class="absolute inset-0"></span>
+                                    {{ $question->title }}
+                                </a>
+                                </h3>
+                                <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ Str::limit($question->body, 150)}}</p>
                             </div>
 
-                            <div class="flex items-center gap-x-4">
-                                <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-4 w-4 rounded-full bg-gray-50">
-                                <div class="text-sm leading-6">
-                                    <p class="font-semibold text-gray-900">
-                                        <a href="/test">
-                                            {{-- <span class="absolute inset-0"></span> --}}
-                                            author {{ $question->author_id }}
-                                        </a>
-                                    </p>
+                            <div class="flex md:justify-between w-full mt-4">
+                                <div class="flex justify-between items-center mb-5 text-gray-700">
+                                    <a href="/questions?tag={{ $question->tag->slug }}" class="hover:underline">
+                                        <span class="bg-{{ $question->tag->color }}-100 text-black-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:text-black-800">
+                                            {{ $question->tag->name }}
+                                        </span>
+                                    </a>
                                 </div>
-                                <time datetime="2020-03-16" class="text-gray-500">{{ $question->created_at->diffForHumans() }}</time>
-                            </div>
 
+                                <div class="flex items-center gap-x-4">
+                                    <img src="{{$question->user->image}}" alt="{{$question->user->image}}" class="h-4 w-4 rounded-full bg-gray-50">
+                                    <div class="text-sm leading-6">
+                                        <p class="font-semibold text-gray-900">
+                                            <a href="/questions?user={{ $question->user->username }}" class="hover:underline">
+                                                <div class="flex items-center space-x-4">
+                                                    <span class="font-medium text-xs dark:text-black">
+                                                        {{$question->user->name}}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <time datetime="2020-03-16" class="text-gray-500">{{ $question->created_at->diffForHumans() }}</time>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
-                </article>
-            @endforeach
-        {{ $questions->links() }}
+                    </article>
+                @endforeach
+            </div>
+            {{ $questions->links() }}
         </div>
     </div>
 

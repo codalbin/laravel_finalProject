@@ -10,7 +10,7 @@ class Tag extends Model
 {
     use HasFactory;
 
-    public function posts(): HasMany {
+    public function questions(): HasMany {
         return $this->hasMany(Question::class);
     }
 }

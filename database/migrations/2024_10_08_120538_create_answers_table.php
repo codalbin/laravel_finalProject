@@ -16,7 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('question_id')->constrained()->cascadeOnDelete();
             $table->text('body');
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained(
+                table: 'users',
+                indexName: 'answer_user_id'
+            );
             $table->integer('votes')->default(0);
         });
     }

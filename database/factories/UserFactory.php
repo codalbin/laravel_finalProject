@@ -25,6 +25,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'username' => fake()->unique()->username(),
             'email' => fake()->unique()->safeEmail(),
             'image' => fake()->imageURL(),
             'email_verified_at' => now(),

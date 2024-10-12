@@ -39,17 +39,24 @@
                             <p class="mt-5 text-sm leading-6 text-gray-600">{{ $question->body }}</p>
                         </div>
                         <div class="flex justify-between w-full">
-                            <div>
-                                <a href="/tags" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-sm text-gray-600 hover:bg-gray-100">Marketing</a>
+                            <div class="flex justify-between items-center mb-5 text-gray-700">
+                                <a href="/questions?tag={{ $question->tag->slug }}" class="hover:underline">
+                                    <span class="bg-{{ $question->tag->color }}-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                                        {{ $question->tag->name }}
+                                    </span>
+                                </a>
                             </div>
 
                             <div class="flex items-center gap-x-4">
-                                <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-4 w-4 rounded-full bg-gray-50">
+                                <img src="{{$question->user->image}}" alt="{{$question->user->image}}" class="h-4 w-4 rounded-full bg-gray-50">
                                 <div class="text-sm leading-6">
                                     <p class="font-semibold text-gray-900">
-                                        <a href="/test">
-                                            {{-- <span class="absolute inset-0"></span> --}}
-                                            author {{ $question->user_id }}
+                                        <a href="/questions?user={{ $question->user->username }}" class="hover:underline">
+                                            <div class="flex items-center space-x-4">
+                                                <span class="font-medium text-xs dark:text-black">
+                                                    {{$question->user->name}}
+                                                </span>
+                                            </div>
                                         </a>
                                     </p>
                                 </div>
@@ -79,12 +86,15 @@
                             </div> --}}
 
                             <div class="flex md:justify-right w-full items-center gap-x-4 mt-4">
-                                <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-4 w-4 rounded-full bg-gray-50">
+                                <img src="{{$answer->user->image}}" alt="{{$answer->user->image}}" class="h-4 w-4 rounded-full bg-gray-50">
                                 <div class="text-sm leading-6">
                                     <p class="font-semibold text-gray-900">
-                                        <a href="/test">
-                                            {{-- <span class="absolute inset-0"></span> --}}
-                                            author {{ $answer->user_id }}
+                                        <a href="/questions?user={{ $answer->user->username }}" class="hover:underline">
+                                            <div class="flex items-center space-x-4">
+                                                <span class="font-medium text-xs dark:text-black">
+                                                    {{$answer->user->name}}
+                                                </span>
+                                            </div>
                                         </a>
                                     </p>
                                 </div>

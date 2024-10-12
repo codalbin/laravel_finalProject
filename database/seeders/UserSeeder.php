@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             'name' => 'Albin T',
             'username' => 'albint',
             'email' => 'alb@gmail.com',
-            'image' => fake()->imageURL(),
+            // 'image' => fake()->imageURL(),
+            'image' => 'https://www.gravatar.com/avatar/' . md5(fake()->email()) . '?d=identicon',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10)
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
             'name' => 'Enzo J',
             'username' => 'enzoj',
             'email' => 'enz@gmail.com',
-            'image' => fake()->imageURL(),
+            'image' => 'https://www.gravatar.com/avatar/' . md5(fake()->email()) . '?d=identicon',
             'email_verified_at' => now(),
             'password' => Hash::make('password2'),
             'remember_token' => Str::random(10)
@@ -39,7 +40,7 @@ class UserSeeder extends Seeder
             'name' => 'Pierre M',
             'username' => 'pierrem',
             'email' => 'pierre@gmail.com',
-            'image' => fake()->imageURL(),
+            'image' => 'https://www.gravatar.com/avatar/' . md5(fake()->email()) . '?d=identicon',
             'email_verified_at' => now(),
             'password' => Hash::make('password3'),
             'remember_token' => Str::random(10)
@@ -49,7 +50,7 @@ class UserSeeder extends Seeder
             'name' => 'Marc D',
             'username' => 'marcd',
             'email' => 'marc@gmail.com',
-            'image' => fake()->imageURL(),
+            'image' => 'https://www.gravatar.com/avatar/' . md5(fake()->email()) . '?d=identicon',
             'email_verified_at' => now(),
             'password' => Hash::make('password4'),
             'remember_token' => Str::random(10)
@@ -59,7 +60,7 @@ class UserSeeder extends Seeder
             'name' => 'Julie S',
             'username' => 'julies',
             'email' => 'julie@gmail.com',
-            'image' => fake()->imageURL(),
+            'image' => 'https://www.gravatar.com/avatar/' . md5(fake()->email()) . '?d=identicon',
             'email_verified_at' => now(),
             'password' => Hash::make('password5'),
             'remember_token' => Str::random(10)

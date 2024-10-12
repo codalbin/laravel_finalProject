@@ -20,4 +20,8 @@ class Answer extends Model
     {
         return $this->belongsTo(Question::class);
     }
+    
+    public function user(): BelongsTo { // Can access to the user from the question
+        return $this->belongsTo(User::class) ;
+    }
 }
