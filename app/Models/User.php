@@ -45,7 +45,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function posts(): HasMany { // Pour que depuis l'auteur on puisse avoir accès à tous ses posts
+    public function questions(): HasMany { // The user can access its questions
         return $this->hasMany(Question::class, 'user_id');
+    }
+
+    public function answers(): HasMany { // The user can access its answers
+        return $this->hasMany(Answer::class, 'user_id');
     }
 }

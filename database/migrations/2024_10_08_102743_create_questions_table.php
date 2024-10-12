@@ -16,16 +16,16 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
-            // $table->foreignId('author_id')->constrained(
-            //     table: 'users',
-            //     indexName: 'post_author_id'
-            // );
-            // $table->foreignId('category_id')->constrained(
-            //     table: 'categories',
-            //     indexName: 'post_category_id'
-            // );
-            $table->integer('user_id');
-            $table->integer('tag_id');
+            $table->foreignId('user_id')->constrained(
+                table: 'users',
+                indexName: 'question_user_id'
+            );
+            $table->foreignId('tag_id')->constrained(
+                table: 'tags',
+                indexName: 'question_tag_id'
+            );
+            // $table->integer('user_id');
+            // $table->integer('tag_id');
             $table->integer('votes')->default(0);
             $table->integer('answers')->default(0);
             $table->integer('views')->default(0);

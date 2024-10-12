@@ -10,26 +10,18 @@
     {{-- <title>{{ $title }}</title> --}}
 
 </head>
-<body class="bg-gray-50">
-    <!--
-  This example requires updating your template:
+<body class="bg-gray-50 m-0">
+  <div class="min-h-full">
 
-  ```
-  <html class="h-full bg-gray-100">
-  <body class="h-full">
-  ```
--->
-<div class="min-h-full">
-
-    {{-- <x-navbar></x-navbar> --}}
-    {{-- <x-header>{{ $title }}</x-header> --}}
-    {{-- {{ $title }} --}}
-    <main>
-      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        {{ $slot }}
-      </div>
-    </main>
+      {{-- <x-navbar></x-navbar> --}}
+      {{-- <x-header>{{ $title }}</x-header> --}}
+      {{-- {{ $title }} --}}
+      <main>
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              {{ $slot }}
+          </div>
+      </main>
   </div>
-
 </body>
+
 </html>

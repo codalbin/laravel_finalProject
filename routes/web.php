@@ -20,13 +20,16 @@ use App\Http\Controllers\QuestionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('questions', [
+        'title' => "All Questions",
+        'questions' => Question::filter(request(['tag', 'user']))->latest()->paginate(5),
+    ]);
 });
 
 Route::get('/questions', function () {
     return view('questions', [
         'title' => "All Questions",
-        'questions' => Question::latest()->paginate(5),
+        'questions' => Question::filter(request(['tag', 'user']))->latest()->paginate(5),
     ]);
 });
 
@@ -49,13 +52,7 @@ Route::get('/users', function(){
     ]);
 });
 
-Route::get('/tags/{tag:slug}', function(Tag $tag){
-    $questions = $tag->questions ;
-    return view ('questions', ['title' => 'Questions related to ' . $tag->name, 'questions' => $questions]) ;
-});
-
-Route::get('/user/{user:username}', function(User $user){
-    $questions = $user->questions ;
-    return view ('questions', ['title' => 'Questions from ' . $user->name, 'questions' => $questions]) ;
+Route::get('/about', function () {
+    return view('about');
 });
 

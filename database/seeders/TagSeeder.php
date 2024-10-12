@@ -17,17 +17,20 @@ class TagSeeder extends Seeder
 
         Tag::create([
             'name' => 'Python',
-            'slug' => 'pytn'
+            'slug' => 'pytn',
+            'color' => 'red'
         ]);
 
         Tag::create([
             'name' => 'Html',
-            'slug' => 'html'
+            'slug' => 'html',
+            'color' => 'blue'
         ]);
 
         Tag::create([
             'name' => 'Laravel',
-            'slug' => 'lrvl'
+            'slug' => 'lrvl',
+            'color' => 'green'
         ]);
     }
 }
