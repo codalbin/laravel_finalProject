@@ -38,6 +38,7 @@ Route::get('/questions', function () {
 
 Route::get('/questions/{question:slug}', function (Question $question) {
     $question = Question::where('slug', $question->slug)->first();
+    $question->increment('views_count');
     return view('question', ['question' => $question, 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(5)]);
 });
 
