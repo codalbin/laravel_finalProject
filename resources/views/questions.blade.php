@@ -1,12 +1,12 @@
 <x-layout>
     <x-header-nav-bar />
-    <div class="bg-white py-10">
+    <div class="py-10">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto lg:mx-0 flex justify-between">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $title }}</h2>
                 <a href="/new-question" class="bg-blue-500 rounded-md p-2 text-white hover:bg-blue-600">Ask Question</a>
             </div>
-            <p class="mt-5">{{ $questions->count() }} Questions</p>
+            <p class="mt-5">{{ $nb_questions }} Questions</p>
             <div class="w-full mx-auto mt-2 mb-10 grid max-w-none grid-cols-1 gap-x-8 gap-y-6 pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-1">
                 @foreach ($questions as $question)
                     <article class="w-full flex border-t-2 border-gray-300 gap-x-4">

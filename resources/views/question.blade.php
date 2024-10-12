@@ -33,7 +33,7 @@
                                 <div class="flex justify-between w-full mt-5">
                                     <div class="flex justify-between items-center mb-5 text-gray-700">
                                         <a href="/questions?tag={{ $question->tag->slug }}" class="hover:underline">
-                                            <span class="bg-{{ $question->tag->color }}-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                                            <span class="bg-{{ $question->tag->color }}-100 text-black-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:text-black-800">
                                                 {{ $question->tag->name }}
                                             </span>
                                         </a>

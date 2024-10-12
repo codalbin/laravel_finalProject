@@ -28,15 +28,24 @@ Route::get('/', function () {
 });
 
 Route::get('/questions', function () {
+    $questions = Question::filter(request(['tag', 'user']))->latest();
+
+    $tag = request('tag');
+    $title = 'All Questions';
+    if ($tag)
+    {
+        $tag_name = Tag::where('slug', $tag)->first()->name;
+        $title = "Questions tagged with $tag_name";
+    }
     return view('questions', [
-        'title' => "All Questions",
-        'questions' => Question::filter(request(['tag', 'user']))->latest()->paginate(5),
+        'title' => $title,
+        'nb_questions' => $questions->count(),
+        'questions' => $questions->paginate(5),
     ]);
 });
 
 Route::get('/questions/{question:slug}', function (Question $question) {
     $question = Question::where('slug', $question->slug)->first();
-    // $question->increment('views');
     return view('question', ['question' => $question, 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(5)]);
 });
 

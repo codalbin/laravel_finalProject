@@ -23,7 +23,7 @@ return new class extends Migration
                 table: 'users',
                 indexName: 'answer_user_id'
             );
-            $table->integer('votes')->default(0);
+            $table->integer('votes_count')->default(0);
         });
     }
 

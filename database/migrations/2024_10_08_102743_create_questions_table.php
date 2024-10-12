@@ -24,11 +24,8 @@ return new class extends Migration
                 table: 'tags',
                 indexName: 'question_tag_id'
             );
-            // $table->integer('user_id');
-            // $table->integer('tag_id');
-            $table->integer('votes')->default(0);
-            $table->integer('answers')->default(0);
-            $table->integer('views')->default(0);
+            $table->integer('votes_count')->default(0);
+            $table->integer('views_count')->default(0);
             $table->timestamps();
         });
     }

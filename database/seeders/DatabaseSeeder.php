@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([TagSeeder::class, UserSeeder::class]) ;
-        Question::factory(10)->recycle([
+        Question::factory(count: 35)->recycle([
             User::all(),
             Tag::all()
         ])->create();
