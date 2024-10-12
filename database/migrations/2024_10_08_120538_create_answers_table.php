@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('question_id')->constrained()->cascadeOnDelete();
             $table->text('body');
             $table->integer('user_id');
+            $table->integer('votes')->default(0);
         });
     }
 
