@@ -18,7 +18,8 @@ class QuestionForm extends Component
     protected $rules = [
         'user_id' => 'required',
         'title' => 'required',
-        'body' => 'required'
+        'body' => 'required',
+        'tag_id' => 'required',
     ];
 
     public function render()
@@ -35,7 +36,7 @@ class QuestionForm extends Component
     {
         $validatedData = $this->validate();
         $validatedData['slug'] = Str::slug($validatedData['title']);
-        $validatedData['tag_id'] = 1;
+        // $validatedData['tag_id'] = 1;
 
         Session::flash('success', 'Question added successfully!');
 
