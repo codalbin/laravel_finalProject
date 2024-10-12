@@ -1,6 +1,6 @@
 <!-- Component to display the header of the page -->
 
-<nav class="bg-gray-300" x-data="{ isOpen: false }">
+<nav x-data="{ isOpen: false }" class="border-b-2">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
@@ -12,11 +12,11 @@
         <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/questions" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">Questions</a>
-            <a href="/users" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">Users</a>
-            <a href="/about" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-700 hover:text-white">About us</a>
+            <a href="/questions" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">Questions</a>
+            <a href="/users" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">Users</a>
+            <a href="/about" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">About us</a>
         </div>
-        </div>   
+        </div>
         </div>
     </div>
     </div>

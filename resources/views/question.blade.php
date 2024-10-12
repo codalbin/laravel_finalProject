@@ -6,6 +6,10 @@
                 <div>
                     <div class="border-b-2 pb-4">
                         <h3 class="mt-3 text-2xl leading-6 text-gray-800 group-hover:text-gray-900 py-4 bo">
+                            {{-- @if(request('tag'))
+                                <a href="/questions/{{ $question->slug }}"></a> --}}
+
+
                             <a href="/questions/{{ $question->slug }}">{{ $question->title }}</a>
                         </h3>
                         <p class="text-xs text-gray-700">

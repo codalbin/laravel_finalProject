@@ -3,7 +3,14 @@
     <div class="py-10">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto lg:mx-0 flex justify-between">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $title }}</h2>
+
+                @if(request('tag'))
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Questions tagged with {{ App\Models\Tag::where('slug', request('tag'))->first()->name }}</h2>
+                @elseif(request('user'))
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Questions by {{ App\Models\User::where('username', request('user'))->first()->name }}</h2>
+                @else
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $title }}</h2>
+                @endif
                 <a href="/new-question" class="bg-blue-500 rounded-md p-2 text-white hover:bg-blue-600">Ask Question</a>
             </div>
             <p class="mt-5">{{ $nb_questions }} Questions</p>

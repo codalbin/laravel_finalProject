@@ -29,16 +29,8 @@ Route::get('/', function () {
 
 Route::get('/questions', function () {
     $questions = Question::filter(request(['tag', 'user']))->latest();
-
-    $tag = request('tag');
-    $title = 'All Questions';
-    if ($tag)
-    {
-        $tag_name = Tag::where('slug', $tag)->first()->name;
-        $title = "Questions tagged with $tag_name";
-    }
     return view('questions', [
-        'title' => $title,
+        'title' => 'All Questions',
         'nb_questions' => $questions->count(),
         'questions' => $questions->paginate(5),
     ]);
