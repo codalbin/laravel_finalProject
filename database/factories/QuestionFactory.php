@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\User;
+use App\Models\Tag;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Question>
@@ -23,6 +25,7 @@ class QuestionFactory extends Factory
             // title content author
             'title' => fake()->sentence(),
             'slug' => Str::slug(fake()->sentence()),
+            'tag_id' => Tag::factory(),
             'tag_id' => Tag::factory(),
             'body' => fake()->text(500),
             'user_id' => User::factory(),

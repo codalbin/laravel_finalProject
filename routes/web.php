@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Livewire\QuestionForm;
 use Illuminate\Support\Facades\Route;
 use App\Models\Question;
@@ -36,11 +37,14 @@ Route::get('/questions', function () {
 Route::get('/questions/{question:slug}', function (Question $question) {
     $question = Question::where('slug', $question->slug)->first();
     // $question->increment('views');
-    return view('question', ['question' => $question, 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(3)]);
+    return view('question', ['question' => $question, 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(5)]);
 });
 
-Route::post('/questions/{question:slug}/upvote', [QuestionController::class, 'upvote'])->name('questions.upvote');
-Route::post('/questions/{question:slug}/downvote', [QuestionController::class, 'downvote'])->name('questions.downvote');
+Route::post('/questions/{question:id}/upvote', [QuestionController::class, 'upvote'])->name('questions.upvote');
+Route::post('/questions/{question:id}/downvote', [QuestionController::class, 'downvote'])->name('questions.downvote');
+
+Route::post('/questions/{question:id}/{answer:id}/upvote', [AnswerController::class, 'upvote'])->name('answers.upvote');
+Route::post('/questions/{question:id}/{answer:id}/downvote', [AnswerController::class, 'downvote'])->name('answers.downvote');
 
 Route::get('/new-question', function(){
     return view('new-question');

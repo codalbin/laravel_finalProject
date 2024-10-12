@@ -15,7 +15,7 @@
         <div class="sm:col-span-4 rounded-md">
             <label for="user_id" class="block text-sm font-medium leading-6 text-gray-900">User ID</label>
             <div class="mt-2">
-                <div class="flex rounded-sm shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                <div class="flex rounded-sm shadow-sm bg-white ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input type="text" name="user_id" id="user_id" wire:model="user_id" autocomplete="user_id" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="1">
                 </div>
                 @error('user_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -26,7 +26,7 @@
             <label for="body" class="block text-sm font-medium leading-6 text-gray-900">Answer</label>
             <div class="mt-2">
                 <div class="flex rounded-sm shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    <textarea id="body" name="body" rows="3" wire:model="body" class="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder=" What is your answer ?"></textarea>
+                    <textarea id="body" name="body" rows="3" wire:model="body" class="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder=" What is your answer ?"></textarea>
                 </div>
             </div>
             @error('body') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror

@@ -6,19 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Answer;
 
-class QuestionController extends Controller
+class AnswerController extends Controller
 {
-    public function upvote($question_id)
+    public function upvote($question_id, $answer_id)
     {
         $question = Question::find($question_id);
-        $question->increment('votes_count');
+        $answer = Answer::find($answer_id);
+        $answer->increment('votes_count');
         return view('question', ['question' => $question, 'answers' => $question->answers()->latest()->paginate(5)]);
     }
 
-    public function downvote($question_id)
+    public function downvote($question_id, $answer_id)
     {
         $question = Question::find($question_id);
-        $question->decrement('votes_count');
+        $answer = Answer::find($answer_id);
+        $answer->decrement('votes_count');
         return view('question', ['question' => $question, 'answers' => $question->answers()->latest()->paginate(5)]);
     }
 }
