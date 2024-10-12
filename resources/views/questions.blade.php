@@ -14,7 +14,7 @@
                         <p>{{ $question->answers }} answers</p>
                         <p>{{ $question->views }} views</p>
                     </div>
-                    <div>
+                    <div class="w-full">
                         <div class="group relative">
                             <h3 class="mt-3 text-lg leading-6 text-blue-600 group-hover:text-blue-700">
                             <a href="/questions/{{ $question->slug }}" class="flex md:justify-left">
@@ -24,10 +24,8 @@
                             </h3>
                             <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ Str::limit($question->body, 150)}}</p>
                         </div>
-                        <div class="relative mt-8 flex items-center gap-x-4">
 
-                        </div>
-                        <div class="flex justify-between w-full">
+                        <div class="flex md:justify-between w-full mt-4">
                             <div>
                                 <a href="/tags" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-sm text-gray-600 hover:bg-gray-100">Marketing</a>
                             </div>
@@ -49,7 +47,7 @@
                     </div>
                 </article>
             @endforeach
-        <!-- More posts... -->
+        {{ $questions->links() }}
         </div>
     </div>
 

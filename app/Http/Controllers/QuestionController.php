@@ -3,28 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Models\Question;
+use App\Models\Answer;
 
 class QuestionController extends Controller
 {
-    public function create(): View
+    public function upvote($question)
     {
-        return view('questions', ['questions' => Question::all()]);
+        // $question->increment('votes');
+        // $question = Question::where('slug', $question->slug)->first();
+        // dd($question);
+        $question = Question::where('slug', $question)->first();
+        // dd($question);
+        $question->increment('votes');
+        return view('question', ['question' => $question, 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(3)]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function downvote($question)
     {
-        $validated = $request->validate([
-            'user_id' => 'required',
-            'title' => 'required|unique:posts|max:255',
-            'slug' => 'required',
-            'body' => 'required',
-        ]);
-
-        // The blog post is valid...
-
-        return redirect('/questions');
+        $question = Question::where('slug', $question)->first();
+        $question->decrement('votes');
+        return view('question', ['question' => $question, 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(3)]);
     }
 }

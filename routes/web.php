@@ -26,16 +26,18 @@ Route::get('/', function () {
 Route::get('/questions', function () {
     return view('questions', [
         'title' => "All Questions",
-        'questions' => Question::all(),
+        'questions' => Question::latest()->paginate(5),
     ]);
 });
 
 Route::get('/questions/{question:slug}', function (Question $question) {
-    // dd($question->answers);
-    return view('question', ['question' => Question::find($question->id), 'answers' => Answer::where('question_id', $question->id)->paginate(3)]);
+    $question = Question::where('slug', $question->slug)->first();
+    // $question->increment('views');
+    return view('question', ['question' => $question, 'answers' => Answer::where('question_id', $question->id)->latest()->paginate(3)]);
 });
 
-// Route::get('/questions/create' , [QuestionController::class, 'create']);
+Route::post('/questions/{question:slug}/upvote', [QuestionController::class, 'upvote'])->name('questions.upvote');
+Route::post('/questions/{question:slug}/downvote', [QuestionController::class, 'downvote'])->name('questions.downvote');
 
 Route::get('/new-question', function(){
     return view('new-question');

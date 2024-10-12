@@ -11,7 +11,7 @@
 @endif
 
 <form wire:submit="send" method="post" class="max-w-xl">
-    <div class=" space-y-6 border-b border-gray-900/10 pb-12 max-w-lg w-full">
+    <div class="bg-gray-50 space-y-6 border-b border-gray-900/10 pb-12 max-w-lg w-full">
         <div class="sm:col-span-4 bg-white p-6 rounded-md border-gray-200 border-2">
             <label for="user_id" class="block text-sm font-medium leading-6 text-gray-900">User ID</label>
             <div class="mt-2">
