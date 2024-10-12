@@ -23,8 +23,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Question::factory(10)->create();
-        Answer::factory(50)->recycle(Question::all())->create();
         $this->call([TagSeeder::class, UserSeeder::class]) ;
+        Question::factory(10)->recycle([
+            User::all(),
+            Tag::all()
+        ])->create();
+        Answer::factory(50)->recycle(Question::all())->create();
     }
 }
