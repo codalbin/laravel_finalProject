@@ -13,9 +13,32 @@
                 @endif
                 <a href="/new-question" class="bg-blue-500 rounded-md p-2 text-white hover:bg-blue-600">Ask Question</a>
             </div>
-            <p class="mt-5">{{ $nb_questions }} Questions</p>
-            <div class="w-full mx-auto mt-2 mb-10 grid max-w-none grid-cols-1 gap-x-8 gap-y-6 pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-1">
-                @foreach ($questions as $question)
+            <p class="mt-4">{{ $nb_questions }} Questions</p>
+            <!-- Search bar -->
+            <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-6">
+                <div class="mx-auto max-w-screen-md sm:text-center">
+                    <form>
+                        @if(!request('tag') && !request('user'))
+                            <div class="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+                                <div class="relative w-full">
+                                    <label for="search" class="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Search</label>
+                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                                        </svg>                                          
+                                    </div>
+                                    <input class="block p-3 pl-10 w-full text-sm text-gray-900 bg-white border border-black rounded-lg focus:ring-primary-500 focus:border-primary-500" placeholder="Search a question" type="search" id="search" name="search" autocomplete="off">
+                                </div>
+                                <div>
+                                    <button type="submit" class="bg-blue-500 ml-1 border border-blue-500 rounded-md p-2 text-white hover:bg-blue-600">Search</button>
+                                </div>
+                            </div>
+                        @endif
+                    </form>
+                </div>
+            </div>            
+            <div class="w-full mx-auto mb-10 grid max-w-none grid-cols-1 gap-x-8 gap-y-6 pt-10 lg:mx-0 lg:max-w-none lg:grid-cols-1">
+                @forelse ($questions as $question)
                     <article class="w-full flex border-t-2 border-gray-300 gap-x-4">
 
                         <div class="flex flex-col text-xs min-w-20 items-end py-3 gap-y-2">
@@ -62,7 +85,12 @@
                             </div>
                         </div>
                     </article>
-                @endforeach
+                @empty 
+                <div>
+                    <p class="font-semibold text-xl my-4">No question found</p>
+                    <a href="/questions" class="block text-blue-600 hover:underline">&laquo; Back to Questions page</a>
+                </div>
+                @endforelse
             </div>
             {{ $questions->links() }}
         </div>

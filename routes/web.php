@@ -21,14 +21,16 @@ use App\Http\Controllers\QuestionController;
 */
 
 Route::get('/', function () {
+    $questions = Question::filter(request(['search', 'tag', 'user']))->latest();
     return view('questions', [
-        'title' => "All Questions",
-        'questions' => Question::filter(request(['tag', 'user']))->latest()->paginate(5),
+        'title' => 'All Questions',
+        'nb_questions' => $questions->count(),
+        'questions' => $questions->paginate(5),
     ]);
 });
 
 Route::get('/questions', function () {
-    $questions = Question::filter(request(['tag', 'user']))->latest();
+    $questions = Question::filter(request(['search', 'tag', 'user']))->latest();
     return view('questions', [
         'title' => 'All Questions',
         'nb_questions' => $questions->count(),
