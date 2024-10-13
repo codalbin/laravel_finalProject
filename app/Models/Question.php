@@ -37,6 +37,12 @@ class Question extends Model
 
     public function scopeFilter(Builder $query, array $filters): void {
         $query->when(
+            $filters['search'] ?? false, 
+            fn($query, $search) =>
+            $query->where('title', 'like', '%' . $search . '%')
+        ) ;
+        
+        $query->when(
             $filters['tag'] ?? false,
             fn($query, $tag) =>
             $query->whereHas('tag', fn($query) => $query->where('slug', $tag))
